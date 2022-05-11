@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PhoneBook_test {
+public class PhoneBookTest {
 
     @Test
-    public void check() {
+    public void testCheck() {
         // given:
         Contact contact1 = new Contact("+79313377785", "Kseniya");
         Contact contact2 = new Contact("+795000630", "Sasha");
@@ -24,6 +24,5 @@ public class PhoneBook_test {
         Assertions.assertEquals(result2, false);
 
     }
-
 
 }

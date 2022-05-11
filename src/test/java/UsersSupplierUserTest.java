@@ -3,10 +3,10 @@ import book.Book;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import users.SupplierUser;
-public class users_SupplierUser_test {
+public class UsersSupplierUserTest {
 
     @Test
-    public void correctUserBookListTest() {
+    public void testCorrectUserBookList() {
         // given:
         Book bookOne = new Book("Война и мир", "Л.Н.Толстой");
         Book bookTwo = new Book("Гарри Поттер и Философский камень", "Д.Роулинг");

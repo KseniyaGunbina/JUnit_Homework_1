@@ -2,10 +2,10 @@ import PhoneBook.Student;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class Student_test {
+public class StudentTest {
 
     @Test
-    public void equals() {
+    public void testEquals() {
         // given:
         Student student1 = new Student("Kseniya", "AS-206", "67325");
         Student student2 = new Student("Kseniya", "AS-206", "67325");
