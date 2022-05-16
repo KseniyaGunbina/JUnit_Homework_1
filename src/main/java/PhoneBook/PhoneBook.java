@@ -3,12 +3,18 @@ package PhoneBook;
 import java.util.*;
 
 public class PhoneBook {
-    Map<String, List<Contact>> PhoneBook = new HashMap<>();
+    private HashMap<String, List<Contact>> PhoneBook = new HashMap<>();
+    private int successFindContact = 0;
+    private int failedFindContact = 0;
 
-    public void addGroup(String groupName) {
-        PhoneBook.put(groupName, new ArrayList<Contact>() {
+    public HashMap<String, List<Contact>> getPhoneBook() {
+        return PhoneBook;
+    }
+    public HashMap<String, List<Contact>> addGroup(String groupName) {
+        PhoneBook.put(groupName, new ArrayList<>() {
         });
         System.out.println("Группа успешно создана.\n");
+        return PhoneBook;
     }
 
     public boolean check(List<Contact> list, Contact contact) {
@@ -22,14 +28,20 @@ public class PhoneBook {
         return false;
     }
 
-    public void findContactOnGroup(String group, Contact contact) {
+    public boolean findContactOnGroup(String group, Contact contact) {
         if (PhoneBook.containsKey(group)) {
             List<Contact> list = PhoneBook.get(group);
             if (check(list, contact)) {
                 System.out.println("Контакт " + contact.toString() + " найден в группе " + group + ".\n");
-            } else
+                successFindContact++;
+                return true;
+            } else {
                 System.out.println("Контакт " + contact.toString() + " в группе " + group + " не найден.\n");
+                failedFindContact++;
+                return false;
+            }
         }
+        return false;
     }
 
     public Contact findContactNumber(String number) {
@@ -46,7 +58,7 @@ public class PhoneBook {
     }
 
 
-    public void addContact(Contact contact, String[] group) {
+    public boolean addContact(Contact contact, String[] group) {
         List<Contact> list;
         for (int i = 0; i < group.length; i++) {
             if (!PhoneBook.containsKey(group[i]))
@@ -63,8 +75,12 @@ public class PhoneBook {
                     System.out.println(j+1 + ") " + list.get(j).toString());
                 }
                 System.out.println();
+                return true;
             } else
-                System.out.println("Контакт " + contact.toString() + " уже состоит в группе " + group[i] + ".\n");
+                System.out.println("Контакт " + contact.toString() +
+                        " уже состоит в группе " + group[i] + ".\n");
+            return false;
         }
+        return false;
     }
 }
